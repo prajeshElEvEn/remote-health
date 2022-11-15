@@ -1,4 +1,4 @@
-const song = require("../models/podcast");
+const podcast = require("../models/podcast");
 
 
 const router = require("express").Router();
@@ -11,7 +11,7 @@ router.get("/getAll", async (req, res) => {
     // projection : {}
   };
 
-  const cursor = await song.find(options);
+  const cursor = await podcast.find(options);
   if (cursor) {
     res.status(200).send({ success: true, data: cursor });
   } else {
@@ -22,7 +22,7 @@ router.get("/getAll", async (req, res) => {
 router.get("/getOne/:getOne", async (req, res) => {
   const filter = { _id: req.params.getOne };
 
-  const cursor = await song.findOne(filter);
+  const cursor = await podcast.findOne(filter);
 
   if (cursor) {
     res.status(200).send({ success: true, data: cursor });
@@ -32,18 +32,18 @@ router.get("/getOne/:getOne", async (req, res) => {
 });
 
 router.post("/save", async (req, res) => {
-  const newSong = song({
+  const newpodcast = podcast({
     name: req.body.name,
     imageURL: req.body.imageURL,
-    songUrl: req.body.songUrl,
+    podcastUrl: req.body.podcastUrl,
     NGO: req.body.NGO,
     artist: req.body.artist,
     language: req.body.language,
     category: req.body.category,
   });
   try {
-    const savedSong = await newSong.save();
-    res.status(200).send({ song: savedSong });
+    const savedpodcast = await newpodcast.save();
+    res.status(200).send({ podcast: savedpodcast });
   } catch (error) {
     res.status(400).send({ success: false, msg: error });
   }
@@ -56,12 +56,12 @@ router.put("/update/:updateId", async (req, res) => {
     new: true,
   };
   try {
-    const result = await song.findOneAndUpdate(
+    const result = await podcast.findOneAndUpdate(
       filter,
       {
         name: req.body.name,
         imageURL: req.body.imageURL,
-        songUrl: req.body.songUrl,
+        podcastUrl: req.body.podcastUrl,
         NGO: req.body.NGO,
         artist: req.body.artist,
         language: req.body.language,
@@ -78,7 +78,7 @@ router.put("/update/:updateId", async (req, res) => {
 router.delete("/delete/:deleteId", async (req, res) => {
   const filter = { _id: req.params.deleteId };
 
-  const result = await song.deleteOne(filter);
+  const result = await podcast.deleteOne(filter);
   if (result.deletedCount === 1) {
     res.status(200).send({ success: true, msg: "Data Deleted" });
   } else {
@@ -87,7 +87,7 @@ router.delete("/delete/:deleteId", async (req, res) => {
 });
 
 router.get("/getFavouritespods", async (req, res) => {
-  const query = req.query.songId;
+  const query = req.query.podcastId;
   res.send(query);
 });
 
