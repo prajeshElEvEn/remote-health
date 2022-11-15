@@ -11,7 +11,7 @@ const podcastSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    podUrl: {
+    podcastUrl: {
       type: String,
       required: true,
     },
