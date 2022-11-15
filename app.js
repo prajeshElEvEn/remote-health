@@ -16,12 +16,12 @@ const artistsRoute = require("./routes/artists");
 app.use("/api/artists/", artistsRoute);
 
 // Album links
-const albumRoute = require("./routes/albums");
-app.use("/api/albums/", albumRoute);
+const albumRoute = require("./routes/ngo");
+app.use("/api/ngo/", albumRoute);
 
 // Songs links
-const songRoute = require("./routes/songs");
-app.use("/api/songs/", songRoute);
+const songRoute = require("./routes/Podcast");
+app.use("/api/Podcast/", songRoute);
 
 
 
