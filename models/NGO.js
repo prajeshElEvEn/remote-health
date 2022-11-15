@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const albumSchema = mongoose.Schema(
+const ngoSchema = mongoose.Schema(
   {
     name: {
       type: String,
@@ -20,4 +20,4 @@ const albumSchema = mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("album", albumSchema);
+module.exports = mongoose.model("ngo", ngoSchema);

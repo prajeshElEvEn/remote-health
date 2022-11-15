@@ -1,4 +1,4 @@
-const album = require("../models/NGO");
+const ngo = require("../models/NGO");
 
 const router = require("express").Router();
 
@@ -10,7 +10,7 @@ router.get("/getAll", async (req, res) => {
     // projection : {}
   };
 
-  const cursor = await album.find(options);
+  const cursor = await ngo.find(options);
   if (cursor) {
     res.status(200).send({ success: true, data: cursor });
   } else {
@@ -21,7 +21,7 @@ router.get("/getAll", async (req, res) => {
 router.get("/getOne/:getOne", async (req, res) => {
   const filter = { _id: req.params.getOne };
 
-  const cursor = await album.findOne(filter);
+  const cursor = await ngo.findOne(filter);
   console.log(cursor);
   if (cursor) {
     res.status(200).send({ success: true, data: cursor });
@@ -31,13 +31,13 @@ router.get("/getOne/:getOne", async (req, res) => {
 });
 
 router.post("/save", async (req, res) => {
-  const newAlbum = album({
+  const newngo = ngo({
     name: req.body.name,
     imageURL: req.body.imageURL,
   });
   try {
-    const savedAlbum = await newAlbum.save();
-    res.status(200).send({ album: savedAlbum });
+    const savedngo = await newngo.save();
+    res.status(200).send({ ngo: savedngo });
   } catch (error) {
     res.status(400).send({ success: false, msg: error });
   }
@@ -50,7 +50,7 @@ router.put("/update/:updateId", async (req, res) => {
     new: true,
   };
   try {
-    const result = await album.findOneAndUpdate(
+    const result = await ngo.findOneAndUpdate(
       filter,
       {
         name: req.body.name,
@@ -58,7 +58,7 @@ router.put("/update/:updateId", async (req, res) => {
       },
       options
     );
-    res.status(200).send({ album: result });
+    res.status(200).send({ ngo: result });
   } catch (error) {
     res.status(400).send({ success: false, msg: error });
   }
@@ -67,7 +67,7 @@ router.put("/update/:updateId", async (req, res) => {
 router.delete("/delete/:deleteId", async (req, res) => {
   const filter = { _id: req.params.deleteId };
 
-  const result = await album.deleteOne(filter);
+  const result = await ngo.deleteOne(filter);
   if (result.deletedCount === 1) {
     res.status(200).send({ success: true, msg: "Data Deleted" });
   } else {
