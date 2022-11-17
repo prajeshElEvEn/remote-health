@@ -11,6 +11,11 @@ const ngoSchema = mongoose.Schema(
       required: true,
 
     },
+    contact:{
+      type: String,
+      required: true,
+
+    },
 
     imageURL: {
       type: String,
