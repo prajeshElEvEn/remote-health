@@ -1,9 +1,12 @@
 API document-
+<h2>register/login</h2>
 1)register-https://remoteheealth.herokuapp.com/api/users/register
 require username,email,password.
 2)login-https://remoteheealth.herokuapp.com/api/users/login
 require username,password.
 
+
+<h2>blog</h2>
 3)blog post -https://remoteheealth.herokuapp.com/api/blogs/
 require-title,description,username,categories.
 
@@ -14,6 +17,8 @@ require-title,description,username,categories.
 6)blog get https://remoteheealth.herokuapp.com/api/blogs/:id
 
 7) get all post -https://remoteheealth.herokuapp.com/api/blogs/
+
+<h2>NGO</h2>
 
 8)ngo save -https://remoteheealth.herokuapp.com/api/ngo/save
 
@@ -28,6 +33,10 @@ changable-name,contact,imageURL.
 
 12) get all ngo - https://remoteheealth.herokuapp.com/api/ngo/getAll 
 
+
+
+
+<h2>podcast</h2>
 13) new podcast - https://remoteheealth.herokuapp.com/api/podcast/save.
 require -name,imageURL,podcastUrl,NGO,artist,language,category.
 
@@ -42,6 +51,7 @@ updatebles-name,imageURL,podcastUrl,NGO,artist,language,category.
 
 18)getone -https://remoteheealth.herokuapp.com/api/podcast/getOne/:id
 
+<h2>artist</h2>
 19)post new artist- https://remoteheealth.herokuapp.com/api/artists/save
 require- name,imageURL,twiiter,instagram
 
