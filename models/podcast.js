@@ -17,6 +17,7 @@ const podcastSchema = mongoose.Schema(
     },
     NGO: {
       type: String,
+      require:true
     },
     artist: {
       type: String,
