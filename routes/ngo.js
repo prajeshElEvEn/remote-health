@@ -33,6 +33,8 @@ router.get("/getOne/:getOne", async (req, res) => {
 router.post("/save", async (req, res) => {
   const newngo = ngo({
     name: req.body.name,
+    area:req.body.area,
+    contact:req.body.contact,
     imageURL: req.body.imageURL,
   });
   try {
@@ -54,6 +56,7 @@ router.put("/update/:updateId", async (req, res) => {
       filter,
       {
         name: req.body.name,
+        contact:req.body.contact,
         imageURL: req.body.imageURL,
       },
       options
